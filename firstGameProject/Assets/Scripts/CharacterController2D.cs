@@ -139,6 +139,6 @@ public class CharacterController2D : MonoBehaviour
 		m_FacingRight = !m_FacingRight;
 
 		// Multiply the player's x local scale by -1.
-		transform.rotate.x(180, 0, 0);;
+		transform.Rotate(0f, 180f, 0f);
 	}
 }
