@@ -12,7 +12,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
 
-	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+	const float k_GroundedRadius = .05f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
@@ -141,4 +141,9 @@ public class CharacterController2D : MonoBehaviour
 		// Multiply the player's x local scale by -1.
 		transform.Rotate(0f, 180f, 0f);
 	}
+
+    private void OnDrawGizmosSelected()
+    {
+		Gizmos.DrawWireSphere(m_GroundCheck.position, k_GroundedRadius);
+    }
 }
