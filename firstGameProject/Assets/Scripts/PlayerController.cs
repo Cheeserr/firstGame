@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalMove = 0f;
     public float speed = 20f;
     bool jump = false;
+    bool attacking = false;
 
     // Update is called once per frame
     void Update()
@@ -25,13 +26,33 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnLanding()
-    {
+    { 
         animator.SetBool("IsJumping", false);
     }
 
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-        jump = false;
+        if (!attacking)
+        {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            jump = false;
+        }
+    }
+
+    public void AttackState()
+    {
+        if(jump)
+        {
+
+        }
+        attacking = true;
+    }
+
+    public void AttackFinished(int value)
+    {
+        if(value.Equals(1))
+        {
+
+        }
     }
 }
