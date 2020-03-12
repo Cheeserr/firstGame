@@ -17,15 +17,16 @@ public class PlayerController : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if(Input.GetButtonDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
         jump = true;
+        animator.SetBool("IsJumping", true);
         }
     }
 
-    void OnLanding()
+    public void OnLanding()
     {
-
+        animator.SetBool("IsJumping", false);
     }
 
     void FixedUpdate()
